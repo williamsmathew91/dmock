@@ -1,0 +1,100 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'gradle-one-jar'
+apply from:"$rootDir/gradle/versioning.gradle"
+
+apply from: "external-dependencies.gradle"
+
+
+project.ext.buildEnv = "LOCAL";
+project.ext.dependenciesAsProject = true;
+
+if(project.hasProperty('buildEnvironment')){
+    buildEnv = project.buildEnvironment;
+}
+
+if(buildEnv == "JENKINS"){
+    dependenciesAsProject = false;
+}
+
+//apply custom properties
+ext{
+    applyDependenciesAsProject = dependenciesAsProject
+};
+
+buildscript {
+    repositories {
+        mavenCentral();
+    }
+
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+    }
+
+}
+
+task oneJar(type: OneJar) {
+    mainClass = 'dmock.Starter'
+}
+
+repositories {
+    mavenCentral();
+
+    maven {
+        url 'http://onejar-maven-plugin.googlecode.com/svn/mavenrepo'
+    }
+}
+
+sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
+targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
+
+
+dependencies {
+    compile 'org.springframework:spring-core:4.0.6.RELEASE'
+    compile 'org.springframework:spring-aop:4.0.6.RELEASE'
+    compile 'org.springframework:spring-context:4.0.6.RELEASE'
+    compile 'org.springframework:spring-web:4.0.6.RELEASE'
+    compile 'com.hazelcast:hazelcast:2.6'
+    compile 'com.hazelcast:hazelcast-client:2.6'
+
+    compile 'org.dstovall:onejar-maven-plugin:1.4.4'
+    compile 'org.eclipse.jetty:jetty-server:9.0.0.RC2'
+    compile 'org.eclipse.jetty:jetty-webapp:9.0.0.RC2'
+    compile 'org.apache.cxf:cxf-rt-frontend-jaxrs:2.7.2'
+    compile 'org.codehaus.jackson:jackson-jaxrs:1.9.11'
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.11'
+    compile 'javax.ws.rs:jsr311-api:1.1.1'
+    compile 'javax.inject:javax.inject:1'
+
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+}
+
+//task deployJar(type: Jar, dependsOn: jar) {
+//    baseName = project.name + '-deploy'
+//    deps = configurations.runtime + configurations.archives.allArtifactFiles
+//    depClasses = { deps.collect { it.isDirectory() ? it : zipTree(it) } }
+//    from(depClasses) {
+//        exclude 'META-INF/MANIFEST.MF'
+//    }
+//    manifest {
+//        attributes 'Main-Class': 'dmock.WebApp'
+//    }
+//}
+
+//task(startServer, dependsOn: 'classes', type: JavaExec) {
+//    main = 'dmock.Starter'
+//    classpath = sourceSets.main.runtimeClasspath
+//}
+
+defaultTasks 'startServer'
+

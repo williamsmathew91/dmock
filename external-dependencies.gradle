@@ -1,0 +1,138 @@
+ext {
+    // compile deps
+    commons = [
+            lang: 'org.apache.commons:commons-lang3:3.1',
+            collections: 'commons-collections:commons-collections:3.2.1',
+            beanUtils: 'commons-beanutils:commons-beanutils:1.8.3',
+            codec: 'commons-codec:commons-codec:1.8',
+            io: 'commons-io:commons-io:2.4',
+            logging: 'commons-logging:commons-logging:1.1.3'
+    ]
+
+    sharedVersion = "2.1"
+    shared = [
+            config: "com.bskyb.mobile.common:shared-dmock.config:${sharedVersion}", changing: true,
+            utils: "com.bskyb.mobile.common:shared-utils:${sharedVersion}", changing: true,
+            db: "com.bskyb.mobile.common:shared-db:${sharedVersion}", changing: true,
+            ws: "com.bskyb.mobile.common:shared-ws:${sharedVersion}", changing: true,
+            guice: "com.bskyb.mobile.common:shared-guice:${sharedVersion}", changing: true
+    ]
+
+    shiroVersion = "1.2.2"
+    shiro = [
+            core: "org.apache.shiro:shiro-core:${shiroVersion}",
+            guice: "org.apache.shiro:shiro-guice:${shiroVersion}",
+            web: "org.apache.shiro:shiro-web:${shiroVersion}"
+    ]
+
+    guiceVersion = "3.0"
+    guice = [
+            core: "com.google.inject:guice:${guiceVersion}",
+            servlet: "com.google.inject.extensions:guice-servlet:${guiceVersion}",
+            multibindings: "com.google.inject.extensions:guice-multibindings:${guiceVersion}"
+    ]
+
+    guava = "com.google.guava:guava:15.0"
+
+    javaTuples = "org.javatuples:javatuples:1.2"
+
+    hazelcastVersion = "2.6"
+    hazelcast = [
+            core: "com.hazelcast:hazelcast:${hazelcastVersion}",
+            client: "com.hazelcast:hazelcast-client:${hazelcastVersion}"
+    ]
+
+    bouncycastle = "bouncycastle:bcprov-jdk15:140"
+
+    jodatime = "joda-time:joda-time:2.1"
+
+    json = "org.json:json:20090211"
+    gson = "com.google.code.gson:gson:2.2.3"
+
+    cglib = "org.sonatype.sisu.inject:cglib:2.2.2"
+
+    proxyToys = "com.thoughtworks.proxytoys:proxytoys:1.0"
+
+    reflections = "org.reflections:reflections:0.9.8"
+
+    javaAssist = "javassist:javassist:3.12.1.GA"
+
+    jerseyVersion = "1.17.1"
+    jersey = [
+            core: "com.sun.jersey:jersey-core:${jerseyVersion}",
+            server: "com.sun.jersey:jersey-server:${jerseyVersion}",
+            servlet: "com.sun.jersey:jersey-servlet:${jerseyVersion}",
+            client: "com.sun.jersey:jersey-client:${jerseyVersion}",
+            apacheClient: "com.sun.jersey.contribs:jersey-apache-client4:${jerseyVersion}",
+            json: "com.sun.jersey:jersey-json:${jerseyVersion}",
+            guice: "com.sun.jersey.contribs:jersey-guice:${jerseyVersion}"
+    ]
+
+    resteasyVersion = "3.0.6.Final"
+    resteasy = [
+            jaxrs: "org.jboss.resteasy:resteasy-jaxrs:${resteasyVersion}",
+            jacksonProvider: "org.jboss.resteasy:resteasy-jackson-provider:${resteasyVersion}"
+    ]
+
+    jacksonMapperAsl = 'org.codehaus.jackson:jackson-mapper-asl:1.9.12'
+
+    astyanax = [
+            core: "com.netflix.astyanax:astyanax-core:1.56.37",
+            thrift: "com.netflix.astyanax:astyanax-thrift:1.56.37",
+            cassandra: "com.netflix.astyanax:astyanax-cassandra:1.56.37",
+            entity: "com.netflix.astyanax:astyanax-entity-mapper:1.56.37"
+    ]
+
+    datastax = [
+            core: "com.datastax.cassandra:cassandra-driver-core:1.0.4"
+    ]
+
+    jpa = "javax.persistence:persistence-api:1.0.2"
+
+    httpclient = "org.apache.httpcomponents:httpclient:4.3.1"
+
+    servletApi = "javax.servlet:servlet-api:2.5"
+
+    slf4j = "org.slf4j:slf4j-api:1.7.5+"
+    slf4jlog4j = "org.slf4j:slf4j-log4j12:1.7.5+"
+    slf4jlogback = 'ch.qos.logback:logback-classic:1.0.13'
+
+    slf4jjcl = "org.slf4j:jcl-over-slf4j:1.7.5+"
+    slf4jjul = "org.slf4j:jul-to-slf4j:1.7.5+"
+
+
+    jettison = "org.codehaus.jettison:jettison:1.1"
+    //jetty = "org.eclipse.jetty.aggregate:jetty-all-server:8.1.9.v20130131"
+
+    // testing deps
+
+    mockito = "org.mockito:mockito-all:1.9.5"
+    testng = "org.testng:testng:6.8.5"
+    unitils = "org.unitils:unitils-core:3.3"
+    hamcrest = "org.hamcrest:hamcrest-all:1.3"
+    ognl = "ognl:ognl:3.0.5"
+
+    powerMockVersion = "1.5.1"
+    powerMock = [
+            mockito: "org.powermock:powermock-api-mockito:${powerMockVersion}",
+            testng: "org.powermock:powermock-module-testng:${powerMockVersion}"
+    ]
+
+    jarjar = "org.elasticsearch:es-jarjar:1.0.0"
+
+    mavenHttpDeployer = "org.apache.maven.wagon:wagon-http:2.2"
+
+    jmxManagement = [
+            remoteOptional: "javax.management:jmxremote_optional:1.0.1_03"
+    ]
+
+    gomacVersion = "1.2"
+    gomac = "com.bskyb.internettv.gomac:gomac:${gomacVersion}"
+
+    aopalliance = 'aopalliance:aopalliance:1.0'
+
+    groovy = 'org.codehaus.groovy:groovy-all:2.1.7'
+
+    snappyjava = 'org.xerial.snappy:snappy-java:1.1.0'
+
+}
