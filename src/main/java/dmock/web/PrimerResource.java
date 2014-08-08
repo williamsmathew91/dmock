@@ -2,6 +2,7 @@ package dmock.web;
 
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.IMap;
+import dmock.model.MockData;
 import dmock.util.KeyConcatUtil;
 import dmock.web.model.PayloadGetMockData;
 import dmock.web.model.PayloadMockData;
@@ -21,8 +22,18 @@ public class PrimerResource {
     private KeyConcatUtil keyConcatUtil;
 
     public PrimerResource() {
+        keyConcatUtil = new KeyConcatUtil();
+
         mockDataMap = Hazelcast.newHazelcastInstance().getMap("mockMap");
-        mockDataMap.put()
+
+        PayloadMockData payloadMockData = new PayloadMockData();
+        payloadMockData.setMethod("GET");
+        payloadMockData.setPath("PATH");
+        MockData mockData = new MockData();
+        mockData.setStatus((short) 200);
+
+        payloadMockData.setMockData(mockData);
+        setMock(payloadMockData);
     }
 
     @POST

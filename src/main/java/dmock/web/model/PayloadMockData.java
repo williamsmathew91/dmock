@@ -2,7 +2,9 @@ package dmock.web.model;
 
 import dmock.model.MockData;
 
-public class PayloadMockData {
+import java.io.Serializable;
+
+public class PayloadMockData implements Serializable{
     private String path;
     private String method;
 

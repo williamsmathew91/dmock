@@ -3,6 +3,8 @@ package dmock.util;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+@Singleton
+@Named
 public class KeyConcatUtil {
     public static final String DELIMITER = ":";
 

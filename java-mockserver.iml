@@ -68,6 +68,9 @@
     <orderEntry type="library" exported="" name="jsr311-api-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="javax.ws.rs-api-2.0-m10" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
+    <orderEntry type="library" exported="" name="slf4j-api-1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="logback-core-1.1.2" level="project" />
+    <orderEntry type="library" exported="" name="logback-classic-1.1.2" level="project" />
   </component>
 </module>
 

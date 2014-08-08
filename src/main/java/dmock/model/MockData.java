@@ -1,8 +1,9 @@
 package dmock.model;
 
+import java.io.Serializable;
 import java.util.Map;
 
-public class MockData {
+public class MockData implements Serializable{
     private short status;
     private Map<String, String> headers;
     private String body;

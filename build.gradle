@@ -4,6 +4,7 @@ apply plugin: 'maven'
 apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'gradle-one-jar'
+apply plugin: 'application'
 apply from:"$rootDir/gradle/versioning.gradle"
 
 apply from: "external-dependencies.gradle"
@@ -33,7 +34,6 @@ buildscript {
     dependencies {
         classpath 'com.github.rholder:gradle-one-jar:1.0.4'
     }
-
 }
 
 task oneJar(type: OneJar) {
@@ -74,10 +74,15 @@ dependencies {
     compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.11'
     compile 'javax.ws.rs:jsr311-api:1.1.1'
     compile 'javax.inject:javax.inject:1'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile 'ch.qos.logback:logback-classic:1.1.2'
+
 
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.9.5'
 }
+
+mainClassName = "dmock.Starter"
 
 //task deployJar(type: Jar, dependsOn: jar) {
 //    baseName = project.name + '-deploy'
@@ -95,6 +100,8 @@ dependencies {
 //    main = 'dmock.Starter'
 //    classpath = sourceSets.main.runtimeClasspath
 //}
+
+
 
 defaultTasks 'startServer'
 

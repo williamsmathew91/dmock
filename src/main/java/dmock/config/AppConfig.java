@@ -20,7 +20,7 @@ import javax.ws.rs.ext.RuntimeDelegate;
 import java.util.Arrays;
 
 @Configuration
-@ComponentScan(basePackages = {"dmock.model", "dmock.web.model", "dmock.web"})
+@ComponentScan(basePackages = {"dmock.model.*", "dmock.web.model.*", "dmock.web.*"})
 public class AppConfig {
 
     @Bean( destroyMethod = "shutdown" )
